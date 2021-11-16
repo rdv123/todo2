@@ -5,7 +5,13 @@ import TodoList from "./components/todo-list";
 import AppHeader from "./components/app-header";
 
 const App = () => {
-  const value = '<script>alert("")</script>';
+  const todoData = [
+    { label: "Drink Coffee", important: false },
+    { label: "Make awesome app", important: true },
+    { label: "Have a lunch", important: false },
+  ];
+
+  // const value = '<script>alert("")</script>';
   // const isLoggedIn = true;
   // const loginBox = <span>Log in please </span>;
   // const welcomeBox = <span>Welcome Back </span>;
@@ -16,7 +22,7 @@ const App = () => {
       {/* {isLoggedIn ? welcomeBox : loginBox} */}
       <AppHeader />
       <SearchPanel />
-      <TodoList />
+      <TodoList todos={todoData} />
     </div>
   );
 };
