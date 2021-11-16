@@ -6,27 +6,19 @@ import AppHeader from "./components/app-header";
 
 const App = () => {
   const todoData = [
-    { label: "Drink Coffee", important: false },
-    { label: "Make awesome app", important: true },
-    { label: "Have a lunch", important: false },
+    { label: "Drink Coffee", important: false, id: 1 },
+    { label: "Make awesome app", important: true, id: 2 },
+    { label: "Have a lunch", important: false, id: 3 },
   ];
 
-  // const value = '<script>alert("")</script>';
-  // const isLoggedIn = true;
-  // const loginBox = <span>Log in please </span>;
-  // const welcomeBox = <span>Welcome Back </span>;
   return (
     <div>
-      {/* {value} */}
-      {/* <span>{new Date().toString()}</span> */}
-      {/* {isLoggedIn ? welcomeBox : loginBox} */}
       <AppHeader />
       <SearchPanel />
       <TodoList todos={todoData} />
     </div>
   );
 };
-
 //const el = <App/>
 
 ReactDOM.render(<App />, document.getElementById("root"));
