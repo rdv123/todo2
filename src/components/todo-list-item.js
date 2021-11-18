@@ -29,31 +29,55 @@ import "./todo-list-item.css";
 // };
 
 export default class TodoListItem extends Component {
-  onLabelClick = () => {
-    console.log(`Done,${this.props.label} `);
+  state = {
+    done: false,
+    important: false,
   };
-  render() {
-    const { label, important = false } = this.props;
 
-    const style = {
-      color: important ? "steelblue" : "black",
-      fontWeight: important ? "bold" : "normal",
-    };
+  onLabelClick = () => {
+    this.setState({
+      done: true,
+    });
+  };
+
+  onMarkImportant = () => {
+    this.setState({
+      important: true,
+    });
+  };
+
+  render() {
+    const { done, important } = this.state;
+    const { label } = this.props;
+
+    let classNames = "todo-list-item";
+    if (done) {
+      classNames += " done";
+    }
+
+    // let classNames = "todo-list-item";
+    // if (done) {
+    //   classNames += "line-through";
+    // }
+
+    if (important) {
+      classNames += " important";
+    }
 
     return (
       <span
         style={{ display: "flex", justifyContent: "space-between" }}
-        className="todo-list-item"
+        className={classNames}
       >
-        <span
-          className="todo-list-item-label"
-          style={style}
-          onClick={this.onLabelClick}
-        >
+        <span className="todo-list-item-label" onClick={this.onLabelClick}>
           {label}
         </span>
         <div>
-          <button type="button" className="btn btn-outline-success btn-sm ">
+          <button
+            onClick={this.onMarkImportant}
+            type="button"
+            className="btn btn-outline-success btn-sm "
+          >
             <i className="fa fa-exclamation" />
           </button>
           <button type="button" className="btn btn-outline-danger btn-sm ">
