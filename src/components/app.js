@@ -15,6 +15,22 @@ export default class App extends Component {
     ],
   };
 
+  deleteItem = (id) => {
+    this.setState(({ todoData }) => {
+      console.log(todoData, "todoData");
+      const idx = todoData.findIndex((el) => el.id === id);
+      console.log("idx", idx);
+
+      const newArray = [...todoData.slice(0, idx), ...todoData.slice(idx + 1)];
+      //   console.log(newArray);
+      //const newArray = [...todoData.slice(0, idx), ...todoData.slice(idx + 1)];
+      //   const newArr = todoData.filter((item) => item.id !== id);
+      return {
+        todoData: newArray,
+      };
+    });
+  };
+
   render() {
     return (
       <div className="todo-app">
@@ -24,10 +40,7 @@ export default class App extends Component {
           <ItemStatusFilter />
         </div>
 
-        <TodoList
-          todos={this.state.todoData}
-          onDeleted={(id) => console.log("del", id)}
-        />
+        <TodoList todos={this.state.todoData} onDeleted={this.deleteItem} />
       </div>
     );
   }
