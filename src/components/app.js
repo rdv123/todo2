@@ -28,9 +28,9 @@ export default class App extends Component {
 
   deleteItem = (id) => {
     this.setState(({ todoData }) => {
-      console.log(todoData, "todoData");
+      // console.log(todoData, "todoData");
       const idx = todoData.findIndex((el) => el.id === id);
-      console.log("idx", idx);
+      // console.log("idx", idx);
 
       const newArray = [...todoData.slice(0, idx), ...todoData.slice(idx + 1)];
       //   console.log(newArray);
