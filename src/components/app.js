@@ -78,6 +78,18 @@ export default class App extends Component {
       };
     });
   };
+  // activateBatton = () => {
+  //   let active = true;
+  // };
+  showActive = () => {
+    console.log("a");
+  };
+  showDone = () => {
+    console.log("d");
+  };
+  showAll = () => {
+    console.log("all");
+  };
 
   render() {
     const { todoData } = this.state;
@@ -90,7 +102,11 @@ export default class App extends Component {
         <AppHeader toDo={todoCount} done={doneCount} />
         <div className="top-panel d-flex">
           <SearchPanel />
-          <ItemStatusFilter />
+          <ItemStatusFilter
+            onActive={this.showActive}
+            onDone={this.showDone}
+            onAll={this.showAll}
+          />
         </div>
         <TodoList
           todos={todoData}
